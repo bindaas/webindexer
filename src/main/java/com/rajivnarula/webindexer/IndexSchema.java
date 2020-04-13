@@ -5,16 +5,16 @@ import com.google.gson.Gson;
 public class IndexSchema {
 
     private String uri ;
-    private String data ;
+    private String text ;
     
     public IndexSchema (String uri , String data){
         this.uri = uri ;
-        this.data = data ;
+        this.text = data ;
 
     }
 
-    public String getData (){
-        return data ;
+    public String getText (){
+        return text ;
     }
 
     public String getUri (){

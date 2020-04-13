@@ -34,7 +34,7 @@ public class WebExtractor {
         Document doc = Jsoup.parse(html);
         Elements elements = doc.getElementsByClass("accordion-body__contents");
         indexSchema = new IndexSchema (uri , elements.text()) ;
-        //System.out.println(indexSchema.toJSON());
+        System.out.println("payload->"+indexSchema.toJSON());
     }
 
 }

@@ -19,7 +19,7 @@ public class ElasticSearchIndexer {
 
         try {
   
-          URL url = new URL("http://localhost:9200/qwerty/asdfg");
+          URL url = new URL("http://localhost:9200/qwerty/asdfg/");
           HttpURLConnection conn = (HttpURLConnection) url.openConnection();
           conn.setDoOutput(true);
           conn.setRequestMethod("POST");
