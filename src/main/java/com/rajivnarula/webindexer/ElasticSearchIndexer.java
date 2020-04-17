@@ -10,9 +10,9 @@ import java.net.URL;
 
 public class ElasticSearchIndexer {
 
-    private IndexSchema indexSchema ;
-    public  ElasticSearchIndexer (IndexSchema indexSchema){
-        this.indexSchema = indexSchema ;
+    private Payload payload ;
+    public  ElasticSearchIndexer (Payload payload){
+        this.payload = payload ;
     }
 
 	public void index () {
@@ -25,7 +25,7 @@ public class ElasticSearchIndexer {
           conn.setRequestMethod("POST");
           conn.setRequestProperty("Content-Type", "application/json");
   
-          String input = indexSchema.toJSON();
+          String input = payload.toJSON();
   
           OutputStream os = conn.getOutputStream();
           os.write(input.getBytes());

@@ -12,9 +12,9 @@ import org.jsoup.select.Elements;
 
 public class WebExtractor {
 
-    private IndexSchema indexSchema ;
-    public IndexSchema getIndexSchema (){
-        return indexSchema ;
+    private Payload payload ;
+    public Payload getPayload (){
+        return payload ;
     }
 
     public WebExtractor(String uri) throws Exception {
@@ -39,8 +39,8 @@ public class WebExtractor {
         Elements elements = doc.getElementsByClass("index-me");
         System.out.println("elements->"+elements);
 
-        indexSchema = new IndexSchema (titleElement.text() ,uri , elements.text()) ;
-        System.out.println("payload->"+indexSchema.toJSON());
+        payload = new Payload (titleElement.text() ,uri , elements.text()) ;
+        System.out.println("payload->"+payload.toJSON());
     }
 
 }

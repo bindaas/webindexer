@@ -17,9 +17,9 @@ public class WebindexerApplication {
 		for (String uri :urls){
 			System.out.println("Extracting ->"+ uri);
 			WebExtractor webExtractor = new WebExtractor (uri);
-			IndexSchema is = webExtractor.getIndexSchema();
+			Payload payload = webExtractor.getPayload();
 			System.out.println("Indexing ->"+ uri);
-			ElasticSearchIndexer esi = new ElasticSearchIndexer(is) ;
+			ElasticSearchIndexer esi = new ElasticSearchIndexer(payload) ;
 			esi.index();
 		}
 	}

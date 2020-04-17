@@ -2,14 +2,14 @@ package com.rajivnarula.webindexer;
 
 import com.google.gson.Gson;
 
-public class IndexSchema {
+public class Payload {
 
     private String uri ;
     private String text ;
     private String title ;
 
     
-    public IndexSchema (String title ,String uri , String text){
+    public Payload (String title ,String uri , String text){
         this.title = title ;
         this.uri = uri ;
         this.text = text ;
