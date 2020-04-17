@@ -6,11 +6,18 @@ public class IndexSchema {
 
     private String uri ;
     private String text ;
-    
-    public IndexSchema (String uri , String data){
-        this.uri = uri ;
-        this.text = data ;
+    private String title ;
 
+    
+    public IndexSchema (String title ,String uri , String text){
+        this.title = title ;
+        this.uri = uri ;
+        this.text = text ;
+
+    }
+
+    public String getTitle (){
+        return title ;
     }
 
     public String getText (){

@@ -7,6 +7,7 @@ import java.net.URL;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class WebExtractor {
@@ -32,8 +33,13 @@ public class WebExtractor {
         String html = content.toString();
 
         Document doc = Jsoup.parse(html);
-        Elements elements = doc.getElementsByClass("accordion-body__contents");
-        indexSchema = new IndexSchema (uri , elements.text()) ;
+        Element titleElement = doc.getElementsByTag("title").first() ;
+        System.out.println("titleElement->"+titleElement.text());
+
+        Elements elements = doc.getElementsByClass("index-me");
+        System.out.println("elements->"+elements);
+
+        indexSchema = new IndexSchema (titleElement.text() ,uri , elements.text()) ;
         System.out.println("payload->"+indexSchema.toJSON());
     }
 
