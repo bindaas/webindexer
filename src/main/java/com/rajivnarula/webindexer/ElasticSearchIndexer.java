@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.UUID;
 
 public class ElasticSearchIndexer {
 
@@ -18,8 +19,10 @@ public class ElasticSearchIndexer {
 	public void index () {
 
         try {
-  
-          URL url = new URL("http://localhost:9200/qwerty/asdfg/");
+
+          UUID uuid = UUID.randomUUID();
+          URL url = new URL("http://localhost:9200/qwerty/_doc/"+uuid.toString());
+          System.out.println("indexing to "+url.toString());
           HttpURLConnection conn = (HttpURLConnection) url.openConnection();
           conn.setDoOutput(true);
           conn.setRequestMethod("POST");
