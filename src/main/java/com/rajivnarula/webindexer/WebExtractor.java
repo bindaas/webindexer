@@ -1,9 +1,12 @@
 package com.rajivnarula.webindexer;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Timestamp;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,13 +37,22 @@ public class WebExtractor {
 
         Document doc = Jsoup.parse(html);
         Element titleElement = doc.getElementsByTag("title").first() ;
-        System.out.println("titleElement->"+titleElement.text());
 
         Elements elements = doc.getElementsByClass("index-me");
-        System.out.println("elements->"+elements);
 
         payload = new Payload (titleElement.text() ,uri , elements.text()) ;
-        System.out.println("payload->"+payload.toJSON());
+        Timestamp t = new Timestamp(System.currentTimeMillis());
+        long timestamp = t.getTime();
+        File file = new File(timestamp+"_payload.json");
+        if (file.createNewFile()){
+            FileWriter writer = new FileWriter(file);
+            writer.write(payload.toJSON());
+            writer.close();
+
+        }else{
+            throw new RuntimeException("Too fast ???");
+        }
+
     }
 
 }
